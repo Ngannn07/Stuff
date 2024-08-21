@@ -105,8 +105,7 @@ ssh networking001@10.13.37.10
 
 # Set router with single static network
 ## Two networks; one router
-![
-](<Screen Shot 2024-08-21 at 21.40.53.png>)
+![alt text](hiii.png)
 
 ```bash
 sudo containerlab destroy -a

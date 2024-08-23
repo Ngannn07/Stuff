@@ -1,0 +1,98 @@
+# CHALLENGE
+
+##challenge.000.000
+
+```bash
+ssh challenge.000.000@10.13.37.10
+```
+
+```
+ls
+```
+
+## challenge.000.001
+
+```bash
+ssh challenge.000.001@10.13.37.10
+```
+
+```
+ls
+```
+
+## challenge.000.002
+
+```bash
+ssh challenge.000.002@10.13.37.10
+```
+
+```
+ls
+```
+
+## challenge.000.003
+> Same steps as when we set up the reverse test server (you can look back as the Hello containerlab in my network_ad.md)
+![alt text](reverse.png)
+
+```bash
+ssh challenge.000.003@10.13.37.10
+```
+
+```
+./reverse-ctf.sh 10.13.37.69
+```
+
+### *remember to sudo containerlab destroy -a after finished
+
+## challenge.000.004
+> Same steps as when we do one router one pc (you can look back as the Connect test-server to a router in my network_ad.md)
+![](<one pc_router.png>)
+But this time change the ip address as for the reverse-ctf is 10.12.36.50 (not 10.0.0.5) 0& 10.13.36.1/24 (not 10.0.0.1) is for the routing
+
+### All other stuff are the same but for this part
+## Configuration
+
+### r1: 
+```bash
+docker exec -it clab-test_to_server-r1 vtysh
+```
+
+```shell
+configure terminal
+interface eth1
+ip address 10.13.36.1/24
+end
+write memory
+show interface brief
+```
+
+### test
+
+```bash
+docker exec -it clab-test_to_server-reverse-ctf sh
+```
+
+```sh
+apk update
+apk add iproute2
+
+ip addr add 10.13.36.50/24 dev eth1 
+ip link set eth1 up
+
+ip route add default via 10.13.36.1
+```
+
+```bash
+sudo containerlab deploy -t server.yml
+```
+```bash
+ssh challenge.000.004@10.13.37.10
+```
+```
+./reverse-ctf.sh 10.13.37.69
+```
+
+## challenge.000.005
+![](threepc.png)
+
+this is 3 pc with one router

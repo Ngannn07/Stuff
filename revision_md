@@ -23,9 +23,12 @@ hidden attributes
 ssh os_revision001@10.13.37.10
 ```
 
+```bash
+ls -a
+cat .secret.flag
 ```
-ls
-```
+
+
 
 ## revision 002
 navigating around
@@ -36,9 +39,11 @@ navigating around
 ssh os_revision002@10.13.37.10
 ```
 
+```bash
+ls -a
+cat .secret.flag
 ```
-ls
-```
+
 
 ## revision 003
 Why did the file go ot the police?
